@@ -10,7 +10,7 @@ import {
 import {
   getTotalQuantity,
 } from "@/utils/cart";
-
+import Link from 'next/link';
 const NavBar = () => {
   return (
     <header id="header" className="header-default header-style-2">
@@ -20,24 +20,24 @@ const NavBar = () => {
             <div className="col-xl-5 tf-md-hidden">
               <ul className="header-list-categories">
                 <li className="categories-item active">
-                  <a href="#" className="text-uppercase">
+                  <Link href="/shop" className="text-uppercase">
                     QUALITY HAIR
-                  </a>
+                  </Link>
                 </li>
                 <li className="categories-item">
-                  <a href="#" className="text-uppercase">
+                  <Link href="/shop" className="text-uppercase">
                     HAIR TREATMENT
-                  </a>
+                  </Link>
                 </li>
                 <li className="categories-item">
-                  <a href="#" className="text-uppercase">
+                  <Link href="/shop" className="text-uppercase">
                     CUT &amp; SYLE
-                  </a>
+                  </Link>
                 </li>
                 <li className="categories-item">
-                  <a href="#" className="text-uppercase">
+                  <Link href="/shop" className="text-uppercase">
                     Find a Store
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -95,11 +95,13 @@ const NavBar = () => {
                 <li className="nav-account">
                   <SignedOut>
                     <SignInButton>
-                      <i className="icon icon-account" />
+                      <span className='bg-black text-white p-2'>Login</span>
                     </SignInButton>
                   </SignedOut>
                   <SignedIn>
-                    <UserButton />
+                    <Link href="/account" className="text-uppercase">
+                      <i className="icon icon-account" />
+                    </Link>
                   </SignedIn>
                 </li>
               </ul>
@@ -109,24 +111,24 @@ const NavBar = () => {
       </div>
       <ul className="header-list-categories tf-lg-hidden">
         <li className="categories-item active">
-          <a href="#" className="text-uppercase">
+          <a href="/shop" className="text-uppercase">
             QUALITY HAIR
           </a>
         </li>
         <li className="categories-item">
-          <a href="#" className="text-uppercase">
+          <Link href="/shop" className="text-uppercase">
             HAIR TREATMENT
-          </a>
+          </Link>
         </li>
         <li className="categories-item">
-          <a href="#" className="text-uppercase">
+          <Link href="/shop" className="text-uppercase">
             CUT &amp; STYLE
-          </a>
+          </Link>
         </li>
         <li className="categories-item">
-          <a href="#" className="text-uppercase">
+          <Link href="/shop" className="text-uppercase">
             Find a Store
-          </a>
+          </Link>
         </li>
       </ul>
     </header>

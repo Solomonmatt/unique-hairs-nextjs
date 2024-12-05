@@ -11,6 +11,13 @@ import {
   getTotalQuantity,
   getTotalPrice,
 } from "@/utils/cart";
+import Link from 'next/link';
+
+// import { loadStripe } from "@stripe/stripe-js";
+
+// const stripePromise = loadStripe(
+//   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+// );
 
 export default function Home() {
   const [cartItems, setCartItems] = useState([]);
@@ -24,6 +31,20 @@ export default function Home() {
     getTotalQuantity,
     getTotalPrice,
   ]);
+
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      console.log("Order placed! You will receive an email confirmation.");
+    }
+
+    if (query.get("canceled")) {
+      console.log(
+        "Order canceled -- continue to shop around and checkout when you’re ready."
+      );
+    }
+  }, []);
 
   return (
     <>
@@ -105,97 +126,97 @@ export default function Home() {
               <div className="tf-categories-wrap">
                 <div className="tf-categories-container">
                   <div className="collection-item-circle hover-img">
-                    <a href="#" className="collection-image img-style">
+                    <Link href="/shop" className="collection-image img-style">
                       <img
                         className="lazyload"
                         data-src="images/demo/D1.png"
                         src="images/demo/D1.png"
                         alt="collection-img"
                       />
-                    </a>
+                    </Link>
                     <div className="collection-content text-center">
-                      <a href="#" className="link title fw-6">
+                      <Link href="/shop" className="link title fw-6">
                         New Arrivals
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="collection-item-circle hover-img">
-                    <a href="#" className="collection-image img-style">
+                    <Link href="/shop" className="collection-image img-style">
                       <img
                         className="lazyload"
                         data-src="images/demo/d2.png"
                         src="images/demo/d2.png"
                         alt="collection-img"
                       />
-                    </a>
+                    </Link>
                     <div className="collection-content text-center">
-                      <a href="#" className="link title fw-6">
+                      <Link href="/shop" className="link title fw-6">
                         Best Sellers
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="collection-item-circle hover-img">
-                    <a href="#" className="collection-image img-style">
+                    <Link href="/shop" className="collection-image img-style">
                       <img
                         className="lazyload"
                         data-src="images/demo/d3.png"
                         src="images/demo/d3.png"
                         alt="collection-img"
                       />
-                    </a>
+                    </Link>
                     <div className="collection-content text-center">
-                      <a href="#" className="link title fw-6">
+                      <Link href="/shop" className="link title fw-6">
                         Top Rated
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="collection-item-circle hover-img">
-                    <a href="#" className="collection-image img-style">
+                    <Link href="/shop" className="collection-image img-style">
                       <img
                         className="lazyload"
                         data-src="images/demo/d2.png"
                         src="images/demo/d2.png"
                         alt="collection-img"
                       />
-                    </a>
+                    </Link>
                     <div className="collection-content text-center">
-                      <a href="#" className="link title fw-6">
+                      <Link href="/shop" className="link title fw-6">
                         Brands We Love
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="collection-item-circle hover-img">
-                    <a href="#" className="collection-image img-style">
+                    <Link href="/shop" className="collection-image img-style">
                       <img
                         className="lazyload"
                         data-src="images/demo/D1.png"
                         src="images/demo/D1.png"
                         alt="collection-img"
                       />
-                    </a>
+                    </Link>
                     <div className="collection-content text-center">
-                      <a href="#" className="link title fw-6">
+                      <Link href="/shop" className="link title fw-6">
                         Trending
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="collection-item-circle hover-img">
                   <div className="has-saleoff-wrap position-relative">
-                    <a href="#" className="collection-image img-style">
+                    <Link href="/shop" className="collection-image img-style">
                       <img
                         className="lazyload"
                         data-src="images/demo/d3.png"
                         src="images/demo/d3.png"
                         alt="collection-img"
                       />
-                    </a>
+                    </Link>
                     <div className="sale-off fw-5">30% off</div>
                   </div>
                   <div className="collection-content text-center">
-                    <a href="#" className="link title fw-6">
+                    <Link href="/shop" className="link title fw-6">
                       Sale
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -3350,16 +3371,19 @@ export default function Home() {
                             >
                               View cart
                             </a>
-                            <a
-                              href="#"
-                              className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
-                            >
-                              <span>Check out</span>
-                            </a>
+                            {/* <form action="/api/checkout_sessions" method="POST"> */}
+                            <form>
+                              <button
+                                type="submit"
+                                className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
+                              >
+                                Check out
+                              </button>
+                            </form>
                           </div>
                         </div>
                       </div>
-                      <div className="tf-mini-cart-tool-openable add-note">
+                      {/* <div className="tf-mini-cart-tool-openable add-note">
                         <div className="overplay tf-mini-cart-tool-close" />
                         <div className="tf-mini-cart-tool-content">
                           <label
@@ -3392,7 +3416,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                       {/* <div className="tf-mini-cart-tool-openable estimate-shipping">
                         <div className="overplay tf-mini-cart-tool-close" />
                         <div className="tf-mini-cart-tool-content">
