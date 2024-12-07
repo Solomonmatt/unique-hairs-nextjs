@@ -11,7 +11,7 @@ import {
   getTotalQuantity,
   getTotalPrice,
 } from "@/utils/cart";
-import Link from 'next/link';
+import Link from "next/link";
 
 // import { loadStripe } from "@stripe/stripe-js";
 
@@ -21,16 +21,12 @@ import Link from 'next/link';
 
 export default function Home() {
   const [cartItems, setCartItems] = useState([]);
+  const [refireEffect, setRefireEffect] = useState(false);
+
   useEffect(() => {
     const cartItems = getCart();
     setCartItems(cartItems);
-  }, [
-    addToCart,
-    removeFromCart,
-    updateItemQuantity,
-    getTotalQuantity,
-    getTotalPrice,
-  ]);
+  }, [refireEffect]);
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -559,6 +555,7 @@ export default function Home() {
                               quantity: 1,
                             };
                             addToCart(product);
+                            setRefireEffect((prev) => !prev);
                           }}
                         >
                           <span className="icon icon-bag" />
@@ -656,6 +653,7 @@ export default function Home() {
                               quantity: 1,
                             };
                             addToCart(product);
+                            setRefireEffect((prev) => !prev);
                           }}
                           className="box-icon quick-add tf-btn-loading"
                         >
@@ -743,6 +741,7 @@ export default function Home() {
                               quantity: 1,
                             };
                             addToCart(product);
+                            setRefireEffect((prev) => !prev);
                           }}
                           className="box-icon quick-add tf-btn-loading"
                         >
@@ -840,6 +839,7 @@ export default function Home() {
                               quantity: 1,
                             };
                             addToCart(product);
+                            setRefireEffect((prev) => !prev);
                           }}
                           className="box-icon quick-add tf-btn-loading"
                         >
@@ -3237,28 +3237,25 @@ export default function Home() {
                   <div className="tf-mini-cart-sroll">
                     <div className="tf-mini-cart-items">
                       {
-                        // cartitems
                         cartItems.map((item) => {
                           return (
                             <div className="tf-mini-cart-item" key={item?.id}>
                               <div className="tf-mini-cart-image">
-                                <a href="#">
                                   <img src={item?.image} alt="" />
-                                </a>
                               </div>
                               <div className="tf-mini-cart-info">
-                                <a className="title link" href="#">
                                   {item?.name}
-                                </a>
                                 <div className="meta-variant">Light gray</div>
                                 <div className="price fw-6">£{item?.price}</div>
                                 <div className="tf-mini-cart-btns">
                                   <div className="wg-quantity small">
                                     <span
                                       className="btn-quantity minus-btn"
-                                      onClick={() =>
-                                        updateItemQuantity(item?.id, -1)
-                                      }
+                                      onClick={() => {
+                                        updateItemQuantity(item?.id, -1);
+
+                                        setRefireEffect((prev) => !prev);
+                                      }}
                                     >
                                       -
                                     </span>
@@ -3270,15 +3267,23 @@ export default function Home() {
                                     <span
                                       className="btn-quantity plus-btn"
                                       onClick={() =>
+                                      {
                                         updateItemQuantity(item?.id, 1)
+
+                                        setRefireEffect((prev) => !prev);
+                                      }
                                       }
                                     >
                                       +
                                     </span>
                                   </div>
                                   <div
-                                    className="tf-mini-cart-remove"
-                                    onClick={() => removeFromCart(item?.id)}
+                                    className="tf-mini-cart-remove cursor-pointer"
+                                    onClick={() => {
+                                      removeFromCart(item?.id)
+                                      setRefireEffect((prev) => !prev);
+                                    }
+                                  }
                                   >
                                     Remove
                                   </div>
