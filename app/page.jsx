@@ -45,7 +45,6 @@ export default function Home() {
   return (
     <>
       <div id="wrapper">
-        
         <div id="wrapper">
           {/* announcement-bar */}
           <div className="announcement-bar bg_dark">
@@ -2499,10 +2498,12 @@ export default function Home() {
             <div className="toolbar-icon -mt-12">
               <SignedOut>
                 <SignInButton>
-                  <div className="toolbar-icon">
-                    <i className="icon icon-account" />
-                  </div>
-                  <div className="toolbar-label">Account</div>
+                  <>
+                    <div className="toolbar-icon">
+                      <i className="icon icon-account" />
+                    </div>
+                    <div className="toolbar-label">Account</div>
+                  </>
                 </SignInButton>
               </SignedOut>
               <SignedIn>

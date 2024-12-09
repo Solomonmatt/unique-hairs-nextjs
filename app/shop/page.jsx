@@ -904,10 +904,12 @@ const ShopPage = () => {
             <div className="toolbar-icon -mt-12">
               <SignedOut>
                 <SignInButton>
-                  <div className="toolbar-icon">
-                    <i className="icon icon-account" />
-                  </div>
-                  <div className="toolbar-label">Account</div>
+                  <>
+                    <div className="toolbar-icon">
+                      <i className="icon icon-account" />
+                    </div>
+                    <div className="toolbar-label">Account</div>
+                  </>
                 </SignInButton>
               </SignedOut>
               <SignedIn>
