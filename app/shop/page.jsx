@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {
   addToCart,
   getCart,
@@ -10,6 +11,8 @@ import {
   getTotalQuantity,
   getTotalPrice,
 } from "@/utils/cart";
+import Link from "next/link";
+
 
 const ShopPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -21,32 +24,8 @@ const ShopPage = () => {
   }, [refireEffect]);
   return (
     <>
-      <div className="preload preload-container">
-        <div className="preload-logo">
-          <div className="spinner" />
-        </div>
-      </div>
-      {/* /preload */}
       <div id="wrapper">
-        {/* header */}
-        {/* RTL */}
-        <a
-          href="javascript:void(0);"
-          id="toggle-rtl"
-          className="tf-btn animate-hover-btn btn-fill"
-        >
-          RTL
-        </a>
-        {/* /RTL  */}
-        {/* preload */}
-        <div className="preload preload-container">
-          <div className="preload-logo">
-            <div className="spinner" />
-          </div>
-        </div>
-        {/* /preload */}
         <div id="wrapper">
-          {/* announcement-bar */}
           <div className="announcement-bar bg_dark">
             <div className="wrap-announcement-bar">
               <div className="box-sw-announcement-bar">
@@ -846,7 +825,8 @@ const ShopPage = () => {
                 <div className="col-12">
                   <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                     <div className="footer-menu_item">
-                      © 2024 Unique Expressions Hair Studio. All Rights Reserved
+                      © 2024 Unique Expressions Hair Studio. All Rights
+                      Reserved
                     </div>
                     <div className="tf-payment">
                       <img src="images/demo/visa.png" alt="" />
@@ -908,21 +888,37 @@ const ShopPage = () => {
             <div className="toolbar-label">Search</div>
           </a>
         </div>
-        <div className="toolbar-item">
-          <a href="#login" data-bs-toggle="modal">
-            <div className="toolbar-icon">
-              <i className="icon-account" />
-            </div>
-            <div className="toolbar-label">Account</div>
-          </a>
-        </div>
+
         <div className="toolbar-item">
           <a href="#shoppingCart" data-bs-toggle="modal">
             <div className="toolbar-icon">
               <i className="icon-bag" />
-              <div className="toolbar-count">1</div>
+              <div className="toolbar-count">{getTotalQuantity()}</div>
             </div>
             <div className="toolbar-label">Cart</div>
+          </a>
+        </div>
+
+        <div className="toolbar-item">
+          <a>
+            <div className="toolbar-icon -mt-12">
+              <SignedOut>
+                <SignInButton>
+                  <div className="toolbar-icon">
+                    <i className="icon icon-account" />
+                  </div>
+                  <div className="toolbar-label">Account</div>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <Link href="/account">
+                  <div className="toolbar-icon">
+                    <i className="icon icon-account" />
+                  </div>
+                  <div className="toolbar-label">Account</div>
+                </Link>
+              </SignedIn>
+            </div>
           </a>
         </div>
       </div>
@@ -1639,10 +1635,10 @@ const ShopPage = () => {
                           return (
                             <div className="tf-mini-cart-item" key={item?.id}>
                               <div className="tf-mini-cart-image">
-                                  <img src={item?.image} alt="" />
+                                <img src={item?.image} alt="" />
                               </div>
                               <div className="tf-mini-cart-info">
-                                  {item?.name}
+                                {item?.name}
                                 <div className="meta-variant">Light gray</div>
                                 <div className="price fw-6">£{item?.price}</div>
                                 <div className="tf-mini-cart-btns">

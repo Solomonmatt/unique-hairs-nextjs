@@ -1,34 +1,17 @@
 "use client";
 
 import React from "react";
-import Link from 'next/link';
+import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
+
 const AccountPage = () => {
+  const { user } = useUser();
+
+  console.log(user);
+
   return (
     <>
-      <div className="preload preload-container">
-        <div className="preload-logo">
-          <div className="spinner" />
-        </div>
-      </div>
-      {/* /preload */}
       <div id="wrapper">
-        {/* header */}
-        {/* RTL */}
-        <a
-          href="javascript:void(0);"
-          id="toggle-rtl"
-          className="tf-btn animate-hover-btn btn-fill"
-        >
-          RTL
-        </a>
-        {/* /RTL  */}
-        {/* preload */}
-        <div className="preload preload-container">
-          <div className="preload-logo">
-            <div className="spinner" />
-          </div>
-        </div>
-        {/* /preload */}
         <div id="wrapper">
           {/* header */}
           <header id="header" className="header-default header-style-2">
@@ -184,7 +167,7 @@ const AccountPage = () => {
               <div className="col-lg-9">
                 <div className="my-account-content account-dashboard">
                   <div className="mb_60">
-                    <h5 className="fw-5 mb_20">Hello Michael Solomon</h5>
+                    <h5 className="fw-5 mb_20">Hello {user?.username}</h5>
                     <p>
                       From your account dashboard you can view your{" "}
                       <a className="text_primary" href="my-account-orders.html">
@@ -530,16 +513,12 @@ const AccountPage = () => {
       {/* toolbar-bottom */}
       <div className="tf-toolbar-bottom type-1150">
         <div className="toolbar-item">
-          <a
-            href="#toolbarShopmb"
-            data-bs-toggle="offcanvas"
-            aria-controls="offcanvasLeft"
-          >
+          <Link href="/shop">
             <div className="toolbar-icon">
               <i className="icon-shop" />
             </div>
             <div className="toolbar-label">Shop</div>
-          </a>
+          </Link>
         </div>
       </div>
       {/* /toolbar-bottom */}

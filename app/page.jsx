@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import {
   addToCart,
   getCart,
@@ -44,30 +44,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="preload preload-container">
-        <div className="preload-logo">
-          <div className="spinner" />
-        </div>
-      </div>
-      {/* /preload */}
       <div id="wrapper">
-        {/* header */}
-        {/* RTL */}
-        <a
-          href="javascript:void(0);"
-          id="toggle-rtl"
-          className="tf-btn animate-hover-btn btn-fill"
-        >
-          RTL
-        </a>
-        {/* /RTL  */}
-        {/* preload */}
-        <div className="preload preload-container">
-          <div className="preload-logo">
-            <div className="spinner" />
-          </div>
-        </div>
-        {/* /preload */}
+        
         <div id="wrapper">
           {/* announcement-bar */}
           <div className="announcement-bar bg_dark">
@@ -2442,7 +2420,8 @@ export default function Home() {
                 <div className="col-12">
                   <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                     <div className="footer-menu_item">
-                      © 2024 Unique Expressions Hair Studio. All Rights Reserved
+                      © 2024 Unique Expressions Hair Studio. All Rights
+                      Reserved
                     </div>
                     <div className="tf-payment">
                       <img src="images/demo/visa.png" alt="" />
@@ -2517,14 +2496,22 @@ export default function Home() {
 
         <div className="toolbar-item">
           <a>
-            <div className="toolbar-icon -mt-2">
+            <div className="toolbar-icon -mt-12">
               <SignedOut>
                 <SignInButton>
-                  <i className="icon icon-account" />
+                  <div className="toolbar-icon">
+                    <i className="icon icon-account" />
+                  </div>
+                  <div className="toolbar-label">Account</div>
                 </SignInButton>
               </SignedOut>
               <SignedIn>
-                <UserButton />
+                <Link href="/account">
+                  <div className="toolbar-icon">
+                    <i className="icon icon-account" />
+                  </div>
+                  <div className="toolbar-label">Account</div>
+                </Link>
               </SignedIn>
             </div>
           </a>
@@ -3236,63 +3223,58 @@ export default function Home() {
                 <div className="tf-mini-cart-main">
                   <div className="tf-mini-cart-sroll">
                     <div className="tf-mini-cart-items">
-                      {
-                        cartItems.map((item) => {
-                          return (
-                            <div className="tf-mini-cart-item" key={item?.id}>
-                              <div className="tf-mini-cart-image">
-                                  <img src={item?.image} alt="" />
-                              </div>
-                              <div className="tf-mini-cart-info">
-                                  {item?.name}
-                                <div className="meta-variant">Light gray</div>
-                                <div className="price fw-6">£{item?.price}</div>
-                                <div className="tf-mini-cart-btns">
-                                  <div className="wg-quantity small">
-                                    <span
-                                      className="btn-quantity minus-btn"
-                                      onClick={() => {
-                                        updateItemQuantity(item?.id, -1);
-
-                                        setRefireEffect((prev) => !prev);
-                                      }}
-                                    >
-                                      -
-                                    </span>
-                                    <input
-                                      type="text"
-                                      name="number"
-                                      defaultValue={item?.quantity}
-                                    />
-                                    <span
-                                      className="btn-quantity plus-btn"
-                                      onClick={() =>
-                                      {
-                                        updateItemQuantity(item?.id, 1)
-
-                                        setRefireEffect((prev) => !prev);
-                                      }
-                                      }
-                                    >
-                                      +
-                                    </span>
-                                  </div>
-                                  <div
-                                    className="tf-mini-cart-remove cursor-pointer"
+                      {cartItems.map((item) => {
+                        return (
+                          <div className="tf-mini-cart-item" key={item?.id}>
+                            <div className="tf-mini-cart-image">
+                              <img src={item?.image} alt="" />
+                            </div>
+                            <div className="tf-mini-cart-info">
+                              {item?.name}
+                              <div className="meta-variant">Light gray</div>
+                              <div className="price fw-6">£{item?.price}</div>
+                              <div className="tf-mini-cart-btns">
+                                <div className="wg-quantity small">
+                                  <span
+                                    className="btn-quantity minus-btn"
                                     onClick={() => {
-                                      removeFromCart(item?.id)
+                                      updateItemQuantity(item?.id, -1);
+
                                       setRefireEffect((prev) => !prev);
-                                    }
-                                  }
+                                    }}
                                   >
-                                    Remove
-                                  </div>
+                                    -
+                                  </span>
+                                  <input
+                                    type="text"
+                                    name="number"
+                                    defaultValue={item?.quantity}
+                                  />
+                                  <span
+                                    className="btn-quantity plus-btn"
+                                    onClick={() => {
+                                      updateItemQuantity(item?.id, 1);
+
+                                      setRefireEffect((prev) => !prev);
+                                    }}
+                                  >
+                                    +
+                                  </span>
+                                </div>
+                                <div
+                                  className="tf-mini-cart-remove cursor-pointer"
+                                  onClick={() => {
+                                    removeFromCart(item?.id);
+                                    setRefireEffect((prev) => !prev);
+                                  }}
+                                >
+                                  Remove
                                 </div>
                               </div>
                             </div>
-                          );
-                        })
-                      }
+                          </div>
+                        );
+                      })}
                       <div className="tf-mini-cart-bottom">
                         <div className="tf-mini-cart-tool">
                           <div className="tf-mini-cart-tool-btn btn-add-note">
