@@ -3,10 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
+import { SignOutButton } from '@clerk/nextjs';
 
 const AccountPage = () => {
   const { user } = useUser();
-
+  
   console.log(user);
 
   return (
@@ -157,9 +158,11 @@ const AccountPage = () => {
                       </Link>
                     </li>
                     <li>
-                      <a href="login.html" className="my-account-nav-item">
-                        Logout
-                      </a>
+                      <SignOutButton>
+                        <span className="my-account-nav-item cursor-pointer">
+                          Logout
+                        </span>
+                      </SignOutButton>
                     </li>
                   </ul>
                 </div>

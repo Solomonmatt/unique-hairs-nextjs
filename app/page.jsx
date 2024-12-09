@@ -2494,16 +2494,15 @@ export default function Home() {
         </div>
 
         <div className="toolbar-item">
-          <a>
-            <div className="toolbar-icon -mt-12">
+            <div className="toolbar-icon">
               <SignedOut>
                 <SignInButton>
-                  <>
+                  <div className="flex flex-col justify-center items-center mt-3 cursor-pointer">
                     <div className="toolbar-icon">
                       <i className="icon icon-account" />
                     </div>
                     <div className="toolbar-label">Account</div>
-                  </>
+                  </div>
                 </SignInButton>
               </SignedOut>
               <SignedIn>
@@ -2515,7 +2514,6 @@ export default function Home() {
                 </Link>
               </SignedIn>
             </div>
-          </a>
         </div>
       </div>
       {/* /toolbar-bottom */}

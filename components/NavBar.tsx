@@ -95,7 +95,7 @@ const NavBar = () => {
                 <li className="nav-account">
                   <SignedOut>
                     <SignInButton>
-                      <span className='bg-black text-white p-2 rounded-md cursor-pointer'>Login</span>
+                      <span className='bg-black text-white p-2 px-4 rounded-md cursor-pointer'>Login</span>
                     </SignInButton>
                   </SignedOut>
                   <SignedIn>
