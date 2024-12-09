@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from 'next/link';
+import { getTotalQuantity } from '@/utils/cart';
 const AccountEditPage = () => {
   return (
     <>
@@ -1602,7 +1603,7 @@ const AccountEditPage = () => {
                       className="nav-icon-item"
                     >
                       <i className="icon icon-bag" />
-                      <span className="count-box">0</span>
+                      <span className="count-box">{getTotalQuantity()}</span>
                     </a>
                   </li>
                 </ul>

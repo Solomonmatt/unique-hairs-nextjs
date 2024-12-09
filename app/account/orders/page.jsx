@@ -2,33 +2,11 @@
 
 import React from "react";
 import Link from 'next/link';
+import { getTotalQuantity } from '@/utils/cart';
 const AccountOrdersPage = () => {
   return (
     <>
-      <div className="preload preload-container">
-        <div className="preload-logo">
-          <div className="spinner" />
-        </div>
-      </div>
-      {/* /preload */}
       <div id="wrapper">
-        {/* header */}
-        {/* RTL */}
-        <a
-          href="javascript:void(0);"
-          id="toggle-rtl"
-          className="tf-btn animate-hover-btn btn-fill"
-        >
-          RTL
-        </a>
-        {/* /RTL  */}
-        {/* preload */}
-        <div className="preload preload-container">
-          <div className="preload-logo">
-            <div className="spinner" />
-          </div>
-        </div>
-        {/* /preload */}
         <div id="wrapper">
           {/* header */}
           <header id="header" className="header-default header-style-2">
@@ -116,7 +94,7 @@ const AccountOrdersPage = () => {
                           className="nav-icon-item"
                         >
                           <i className="icon icon-bag" />
-                          <span className="count-box">0</span>
+                          <span className="count-box">{getTotalQuantity()}</span>
                         </a>
                       </li>
                     </ul>
