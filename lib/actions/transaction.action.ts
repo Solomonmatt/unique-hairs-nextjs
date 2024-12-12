@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation'
 import Stripe from "stripe";
 
-export async function checkoutCart(transaction) {
+export async function checkoutCart(transaction: any) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
   const amount = Number(transaction.amount) * 100;
