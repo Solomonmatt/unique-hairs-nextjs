@@ -11,6 +11,7 @@ import {
   getTotalQuantity,
 } from "@/utils/cart";
 import Link from 'next/link';
+
 const NavBar = () => {
   return (
     <header id="header" className="header-default header-style-2">
@@ -62,13 +63,13 @@ const NavBar = () => {
               </a>
             </div>
             <div className="col-xl-2 col-md-4 col-6 text-center">
-              <a href="index.html" className="logo-header">
+              <Link href="/" className="logo-header">
                 <img
                   src="images/demo/NEW LOGO WHITE.png"
                   alt="logo"
                   className="logo"
                 />
-              </a>
+              </Link>
             </div>
             <div className="col-xl-5 col-md-4 col-3">
               <ul className="nav-icon d-flex justify-content-end align-items-center gap-20">

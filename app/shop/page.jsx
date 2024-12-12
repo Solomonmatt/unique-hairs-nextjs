@@ -10,18 +10,45 @@ import {
   updateItemQuantity,
   getTotalQuantity,
   getTotalPrice,
+  clearCart,
 } from "@/utils/cart";
 import Link from "next/link";
-
+import { loadStripe } from "@stripe/stripe-js";
+import { checkoutCart } from "@/lib/actions/transaction.action";
+import { client, urlFor } from "@/lib/sanity/client";
+import { PRODUCTS_QUERY } from "@/lib/sanity/queries";
 
 const ShopPage = () => {
+  const [products, setProducts] = useState([]);
+
   const [cartItems, setCartItems] = useState([]);
   const [refireEffect, setRefireEffect] = useState(false);
+
+  const onCheckout = async () => {
+    const transaction = {
+      amount: getTotalPrice(),
+    };
+
+    await checkoutCart(transaction);
+    clearCart();
+  };
+
+  useEffect(() => {
+    client
+      .fetch(PRODUCTS_QUERY, {}, {})
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     const cartItems = getCart();
     setCartItems(cartItems);
   }, [refireEffect]);
+
+  useEffect(() => {
+    loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+  }, []);
+
   return (
     <>
       <div id="wrapper">
@@ -153,421 +180,98 @@ const ShopPage = () => {
           <div className="wrapper-control-shop">
             <div className="meta-filter-shop" />
             <div className="grid-layout wrapper-shop" data-grid="grid-4">
-              <div className="swiper-slide">
-                <div className="card-product style-brown">
-                  <div className="card-product-wrapper rounded-0">
-                    <a href="#" className="product-img ">
-                      <img
-                        className="lazyload img-product"
-                        data-src="images/products/shop1.png"
-                        src="images/products/shop1.png"
-                        alt="image-product"
-                      />
-                      <img
-                        className="lazyload img-hover"
-                        data-src="images/products/shop1.png"
-                        src="images/products/shop1.png"
-                        alt="image-product"
-                      />
-                    </a>
-                    <div className="list-product-btn absolute-2">
-                      <button
-                        className="box-icon quick-add tf-btn-loading"
-                        onClick={() => {
-                          const product = {
-                            id: 1,
-                            name: "Virgin Hair",
-                            price: 200,
-                            image: "images/products/shop1.png",
-                            quantity: 1,
-                          };
-                          addToCart(product);
-                          setRefireEffect((prev) => !prev);
-                        }}
-                      >
-                        <span className="icon icon-bag" />
-                        <span className="tooltip">Add to cart</span>
-                      </button>
-                      <a
-                        href="javascript:void(0);"
-                        className="box-icon wishlist btn-icon-action"
-                      >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
-                        <span className="icon icon-delete" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="offcanvas"
-                        aria-controls="offcanvasLeft"
-                        className="box-icon compare btn-icon-action"
-                      >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
-                        <span className="icon icon-check" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="modal"
-                        className="box-icon quickview tf-btn-loading"
-                      >
-                        <span className="icon icon-view" />
-                        <span className="tooltip">Quick View</span>
-                      </a>
+              {products &&
+                products.map((product) => {
+                  return (
+                    <div className="swiper-slide" key={product._id}>
+                      <div className="card-product style-brown">
+                        <div className="card-product-wrapper rounded-0">
+                          <a href="#" className="product-img ">
+                            <img
+                              className="lazyload img-product rounded-md"
+                              src={urlFor(product.image).url()}
+                              alt="image-product"
+                            />
+                            <img
+                              className="lazyload img-hover rounded-md"
+                              src={urlFor(product.image).url()}
+                              alt="image-product"
+                            />
+                          </a>
+                          <div className="list-product-btn absolute-2">
+                            <button
+                              className="box-icon quick-add tf-btn-loading"
+                              onClick={() => {
+                                addToCart({
+                                  id: product._id,
+                                  name: product.name,
+                                  price: product.price,
+                                  image: urlFor(product.image).url(),
+                                  quantity: 1,
+                                });
+                                setRefireEffect((prev) => !prev);
+                              }}
+                            >
+                              <span className="icon icon-bag" />
+                              <span className="tooltip">Add to cart</span>
+                            </button>
+                            <a
+                              href="#"
+                              className="box-icon wishlist btn-icon-action"
+                            >
+                              <span className="icon icon-heart" />
+                              <span className="tooltip">Add to Wishlist</span>
+                              <span className="icon icon-delete" />
+                            </a>
+                            <a
+                              href="#"
+                              data-bs-toggle="offcanvas"
+                              aria-controls="offcanvasLeft"
+                              className="box-icon compare btn-icon-action"
+                            >
+                              <span className="icon icon-compare" />
+                              <span className="tooltip">Add to Compare</span>
+                              <span className="icon icon-check" />
+                            </a>
+                          </div>
+                        </div>
+                        <div className="card-product-info">
+                          <a
+                            href="#"
+                            className="title link font-poppins text-black font-bold text-xl"
+                          >
+                            {product?.name}
+                          </a>
+                          <span className="price font-poppins text-black text-lg">
+                            £{product?.price}
+                          </span>
+                          {/* <ul className="list-color-product">
+                            <li className="list-color-item color-swatch active">
+                              <span className="tooltip">Golden Yellow</span>
+                              <span className="swatch-value bg_golden-yellow" />
+                              <img
+                                className="lazyload"
+                                data-src="images/products/shop1.png"
+                                src="images/products/shop1.png"
+                                alt="image-product"
+                              />
+                            </li>
+                            <li className="list-color-item color-swatch">
+                              <span className="tooltip">Silver White</span>
+                              <span className="swatch-value bg_white" />
+                              <img
+                                className="lazyload"
+                                data-src="images/products/shop1.png"
+                                src="images/products/shop1.png"
+                                alt="image-product"
+                              />
+                            </li>
+                          </ul> */}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="card-product-info">
-                    <a href="#" className="title link font-poppins text-white">
-                      {" "}
-                      Virgin Hair
-                    </a>
-                    <span className="price font-poppins text-white">£200</span>
-                    <ul className="list-color-product">
-                      <li className="list-color-item color-swatch active">
-                        <span className="tooltip">Golden Yellow</span>
-                        <span className="swatch-value bg_golden-yellow" />
-                        <img
-                          className="lazyload"
-                          data-src="images/products/shop1.png"
-                          src="images/products/shop1.png"
-                          alt="image-product"
-                        />
-                      </li>
-                      <li className="list-color-item color-swatch">
-                        <span className="tooltip">Silver White</span>
-                        <span className="swatch-value bg_white" />
-                        <img
-                          className="lazyload"
-                          data-src="images/products/shop1.png"
-                          src="images/products/shop1.png"
-                          alt="image-product"
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="card-product style-brown">
-                  <div className="card-product-wrapper rounded-0">
-                    <a href="#" className="product-img ">
-                      <img
-                        className="lazyload img-product"
-                        data-src="images/products/shop2.png"
-                        src="images/products/shop2.png"
-                        alt="image-product"
-                      />
-                      <img
-                        className="lazyload img-hover"
-                        data-src="images/products/shop2.png"
-                        src="images/products/shop2.png"
-                        alt="image-product"
-                      />
-                    </a>
-                    <div className="list-product-btn absolute-2">
-                      <button
-                        onClick={() => {
-                          const product = {
-                            id: 2,
-                            name: "2x6 Closure",
-                            price: 200,
-                            image: "images/products/shop2.png",
-                            quantity: 1,
-                          };
-                          addToCart(product);
-                          setRefireEffect((prev) => !prev);
-                        }}
-                        className="box-icon quick-add tf-btn-loading"
-                      >
-                        <span className="icon icon-bag" />
-                        <span className="tooltip">Add to cart</span>
-                      </button>
-                      <a
-                        href="javascript:void(0);"
-                        className="box-icon wishlist btn-icon-action"
-                      >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
-                        <span className="icon icon-delete" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="offcanvas"
-                        aria-controls="offcanvasLeft"
-                        className="box-icon compare btn-icon-action"
-                      >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
-                        <span className="icon icon-check" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="modal"
-                        className="box-icon quickview tf-btn-loading"
-                      >
-                        <span className="icon icon-view" />
-                        <span className="tooltip">Quick View</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="card-product-info">
-                    <a href="#" className="title link font-poppins text-white">
-                      2x6 Closure
-                    </a>
-                    <span className="price font-poppins text-white">£200</span>
-                    <ul className="list-color-product">
-                      <li className="list-color-item color-swatch active">
-                        <span className="tooltip">Golden Yellow</span>
-                        <span className="swatch-value bg_golden-yellow" />
-                        <img
-                          className="lazyload"
-                          data-src="images/products/shop22.png"
-                          src="images/products/shop22.png"
-                          alt="image-product"
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="card-product style-brown">
-                  <div className="card-product-wrapper rounded-0">
-                    <a href="#" className="product-img ">
-                      <img
-                        className="lazyload img-product"
-                        data-src="images/products/shop3.png"
-                        src="images/products/shop3.png"
-                        alt="image-product"
-                      />
-                      <img
-                        className="lazyload img-hover"
-                        data-src="images/products/shop3a.png"
-                        src="images/products/shop3a.png"
-                        alt="image-product"
-                      />
-                    </a>
-                    <div className="list-product-btn absolute-2">
-                      <button
-                        onClick={() => {
-                          const product = {
-                            id: 3,
-                            name: "Ombré Blonde 5x5 HD lace closure",
-                            price: 200,
-                            image: "images/products/shop3.png",
-                            quantity: 1,
-                          };
-                          addToCart(product);
-                          setRefireEffect((prev) => !prev);
-                        }}
-                        className="box-icon quick-add tf-btn-loading"
-                      >
-                        <span className="icon icon-bag" />
-                        <span className="tooltip">Add to cart</span>
-                      </button>
-                      <a
-                        href="javascript:void(0);"
-                        className="box-icon wishlist btn-icon-action"
-                      >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
-                        <span className="icon icon-delete" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="offcanvas"
-                        aria-controls="offcanvasLeft"
-                        className="box-icon compare btn-icon-action"
-                      >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
-                        <span className="icon icon-check" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="modal"
-                        className="box-icon quickview tf-btn-loading"
-                      >
-                        <span className="icon icon-view" />
-                        <span className="tooltip">Quick View</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="card-product-info">
-                    <a href="#" className="title link font-poppins text-white">
-                      Ombré Blonde 5x5 HD lace closure
-                    </a>
-                    <span className="price font-poppins text-white">£200</span>
-                    <ul className="list-color-product">
-                      <li className="list-color-item color-swatch active">
-                        <span className="tooltip">Golden Yellow</span>
-                        <span className="swatch-value bg_golden-yellow" />
-                        <img
-                          className="lazyload"
-                          data-src="images/products/shop3.png"
-                          src="images/products/shop3.png"
-                          alt="image-product"
-                        />
-                      </li>
-                      <li className="list-color-item color-swatch">
-                        <span className="tooltip">Dark Green</span>
-                        <span className="swatch-value bg_dark-green" />
-                        <img
-                          className="lazyload"
-                          data-src="images/products/shop3a.png"
-                          src="images/products/shop3a.png"
-                          alt="image-product"
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="card-product style-brown">
-                  <div className="card-product-wrapper rounded-0">
-                    <a href="#" className="product-img ">
-                      <img
-                        className="lazyload img-product"
-                        data-src="images/products/jewerly-7.jpg"
-                        src="images/products/jewerly-7.jpg"
-                        alt="image-product"
-                      />
-                      <img
-                        className="lazyload img-hover"
-                        data-src="images/products/jewerly-8.jpg"
-                        src="images/products/jewerly-8.jpg"
-                        alt="image-product"
-                      />
-                    </a>
-                    <div className="list-product-btn absolute-2">
-                      <button
-                        onClick={() => {
-                          const product = {
-                            id: 4,
-                            name: "New Hair Coming",
-                            price: 200,
-                            image: "images/products/shop3.png",
-                            quantity: 1,
-                          };
-                          addToCart(product);
-                          setRefireEffect((prev) => !prev);
-                        }}
-                        className="box-icon quick-add tf-btn-loading"
-                      >
-                        <span className="icon icon-bag" />
-                        <span className="tooltip">Add to cart</span>
-                      </button>
-                      <a
-                        href="javascript:void(0);"
-                        className="box-icon wishlist btn-icon-action"
-                      >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
-                        <span className="icon icon-delete" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="offcanvas"
-                        aria-controls="offcanvasLeft"
-                        className="box-icon compare btn-icon-action"
-                      >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
-                        <span className="icon icon-check" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="modal"
-                        className="box-icon quickview tf-btn-loading"
-                      >
-                        <span className="icon icon-view" />
-                        <span className="tooltip">Quick View</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="card-product-info">
-                    <a href="#" className="title link font-poppins text-white">
-                      New Hair Coming
-                    </a>
-                    <span className="price font-poppins text-white">£200</span>
-                    <ul className="list-color-product">
-                      <li className="list-color-item color-swatch active">
-                        <span className="tooltip">Golden Yellow</span>
-                        <span className="swatch-value bg_golden-yellow" />
-                        <img
-                          className="lazyload"
-                          data-src="images/products/jewerly-7.jpg"
-                          src="images/products/jewerly-7.jpg"
-                          alt="image-product"
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="card-product style-brown">
-                  <div className="card-product-wrapper rounded-0">
-                    <a href="#" className="product-img ">
-                      <img
-                        className="lazyload img-product"
-                        data-src="images/products/jewerly-9.jpg"
-                        src="images/products/jewerly-9.jpg"
-                        alt="image-product"
-                      />
-                      <img
-                        className="lazyload img-hover"
-                        data-src="images/products/jewerly-10.jpg"
-                        src="images/products/jewerly-10.jpg"
-                        alt="image-product"
-                      />
-                    </a>
-                    <div className="list-product-btn absolute-2">
-                      <a
-                        href="#shoppingCart"
-                        data-bs-toggle="modal"
-                        className="box-icon quick-add tf-btn-loading"
-                      >
-                        <span className="icon icon-bag" />
-                        <span className="tooltip">Add to cart</span>
-                      </a>
-                      <a
-                        href="javascript:void(0);"
-                        className="box-icon wishlist btn-icon-action"
-                      >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
-                        <span className="icon icon-delete" />
-                      </a>
-                      <a
-                        href="#compare"
-                        data-bs-toggle="offcanvas"
-                        aria-controls="offcanvasLeft"
-                        className="box-icon compare btn-icon-action"
-                      >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
-                        <span className="icon icon-check" />
-                      </a>
-                      <a
-                        href="#"
-                        data-bs-toggle="modal"
-                        className="box-icon quickview tf-btn-loading"
-                      >
-                        <span className="icon icon-view" />
-                        <span className="tooltip">Quick View</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="card-product-info">
-                    <a href="#" className="title link font-poppins text-white">
-                      New Hair Coming
-                    </a>
-                    <span className="price font-poppins text-white">£200</span>
-                  </div>
-                </div>
-              </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -825,8 +529,7 @@ const ShopPage = () => {
                 <div className="col-12">
                   <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                     <div className="footer-menu_item">
-                      © 2024 Unique Expressions Hair Studio. All Rights
-                      Reserved
+                      © 2024 Unique Expressions Hair Studio. All Rights Reserved
                     </div>
                     <div className="tf-payment">
                       <img src="images/demo/visa.png" alt="" />
@@ -934,8 +637,8 @@ const ShopPage = () => {
           <div className="mb-body">
             <ul className="nav-ul-mb" id="wrapper-menu-navigation">
               <li className="nav-mb-item">
-                <a
-                  href="index.html"
+                <Link
+                  href="/"
                   className="collapsed mb-menu-link current"
                   data-bs-toggle="collapse"
                   aria-expanded="true"
@@ -943,7 +646,7 @@ const ShopPage = () => {
                 >
                   <span>Home</span>
                   <span className="" />
-                </a>
+                </Link>
                 <div id="dropdown-menu-one" className="collapse">
                   <ul className="sub-nav-menu">
                     <li>
@@ -1629,61 +1332,54 @@ const ShopPage = () => {
                 <div className="tf-mini-cart-main">
                   <div className="tf-mini-cart-sroll">
                     <div className="tf-mini-cart-items">
-                      {
-                        // cartitems
-                        cartItems.map((item) => {
-                          return (
-                            <div className="tf-mini-cart-item" key={item?.id}>
-                              <div className="tf-mini-cart-image">
-                                <img src={item?.image} alt="" />
-                              </div>
-                              <div className="tf-mini-cart-info">
-                                {item?.name}
-                                <div className="meta-variant">Light gray</div>
-                                <div className="price fw-6">£{item?.price}</div>
-                                <div className="tf-mini-cart-btns">
-                                  <div className="wg-quantity small">
-                                    <span
-                                      className="btn-quantity minus-btn"
-                                      onClick={() => {
-                                        updateItemQuantity(item?.id, -1);
-
-                                        setRefireEffect((prev) => !prev);
-                                      }}
-                                    >
-                                      -
-                                    </span>
-                                    <input
-                                      type="text"
-                                      name="number"
-                                      defaultValue={item?.quantity}
-                                    />
-                                    <span
-                                      className="btn-quantity plus-btn"
-                                      onClick={() => {
-                                        updateItemQuantity(item?.id, 1);
-
-                                        setRefireEffect((prev) => !prev);
-                                      }}
-                                    >
-                                      +
-                                    </span>
-                                  </div>
-                                  <div
-                                    className="tf-mini-cart-remove cursor-pointer"
+                      {cartItems.map((item) => {
+                        return (
+                          <div className="tf-mini-cart-item" key={item?.id}>
+                            <div className="tf-mini-cart-image">
+                              <img src={item?.image} alt="" />
+                            </div>
+                            <div className="tf-mini-cart-info">
+                              {item?.name}
+                              <div className="meta-variant">Light gray</div>
+                              <div className="price fw-6">£{item?.price}</div>
+                              <div className="tf-mini-cart-btns">
+                                <div className="wg-quantity small flex items-center">
+                                  <span
+                                    className="btn-quantity minus-btn"
                                     onClick={() => {
-                                      removeFromCart(item?.id);
+                                      updateItemQuantity(item?.id, -1);
+
                                       setRefireEffect((prev) => !prev);
                                     }}
                                   >
-                                    Remove
-                                  </div>
+                                    -
+                                  </span>
+                                  <span>{item?.quantity}</span>
+                                  <span
+                                    className="btn-quantity plus-btn"
+                                    onClick={() => {
+                                      updateItemQuantity(item?.id, 1);
+
+                                      setRefireEffect((prev) => !prev);
+                                    }}
+                                  >
+                                    +
+                                  </span>
+                                </div>
+                                <div
+                                  className="tf-mini-cart-remove cursor-pointer"
+                                  onClick={() => {
+                                    removeFromCart(item?.id);
+                                    setRefireEffect((prev) => !prev);
+                                  }}
+                                >
+                                  Remove
                                 </div>
                               </div>
                             </div>
-                          );
-                        })
-                      }
+                          </div>
+                        );
+                      })}
                       <div className="tf-mini-cart-bottom">
                         <div className="tf-mini-cart-tool">
                           <div className="tf-mini-cart-tool-btn btn-add-note">
@@ -1761,14 +1457,7 @@ const ShopPage = () => {
                             </label>
                           </div>
                           <div className="tf-mini-cart-view-checkout">
-                            <a
-                              href="#"
-                              className="tf-btn btn-outline radius-3 link w-100 justify-content-center"
-                            >
-                              View cart
-                            </a>
-                            {/* <form action="/api/checkout_sessions" method="POST"> */}
-                            <form>
+                            <form action={onCheckout} method="POST">
                               <button
                                 type="submit"
                                 className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
