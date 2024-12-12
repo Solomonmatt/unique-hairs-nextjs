@@ -11,7 +11,7 @@ export async function checkoutCart(transaction: any) {
   const session = await stripe.checkout.sessions.create({
     billing_address_collection: 'auto',
     shipping_address_collection: {
-      allowed_countries: ['US', 'UK'],
+      allowed_countries: ['US', 'GB'],
     },
     line_items: [
       {
