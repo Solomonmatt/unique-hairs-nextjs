@@ -1598,15 +1598,10 @@ export default function Home() {
                 <div className="wrap-carousel">
                   <div
                     dir="ltr"
-                    className="swiper tf-sw-testimonial mb_60"
-                    data-preview={4}
-                    data-tablet={2}
-                    data-mobile={1}
-                    data-space-lg={30}
-                    data-space-md={15}
+                    className="tf-sw-testimonial mb-[60px]"
                   >
-                    <div className="swiper-wrapper">
-                      <div className="swiper-slide height-auto">
+                    <div className="flex flex-row wrap gap-3">
+                      <div className="w-[250px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay="0s"
@@ -1630,7 +1625,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="swiper-slide height-auto">
+                      <div className="w-[250px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".1s"
@@ -1648,14 +1643,13 @@ export default function Home() {
                             <i className="icon-star" />
                             <i className="icon-star" />
                           </div>
-                          <div className="heading">Perfect Hair Salon.</div>
                           <div className="text">
                             &quot;The attention to detail at this salon is
                             incredible!&quot;
                           </div>
                         </div>
                       </div>
-                      <div className="swiper-slide height-auto">
+                      <div className="w-[250px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".2s"
@@ -1679,7 +1673,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="swiper-slide height-auto">
+                      <div className="w-[250px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".2s"
@@ -1704,7 +1698,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="swiper-slide height-auto">
+                      <div className="w-[250px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".2s"
