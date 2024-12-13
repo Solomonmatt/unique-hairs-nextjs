@@ -3,6 +3,9 @@
 import React from "react";
 import NavBar from '@/components/NavBar';
 import AccountSideBar from '@/components/AccountSideBar';
+import { SignOutButton } from "@clerk/nextjs";
+import Link from "next/link";
+
 const AccountOrdersPage = () => {
   return (
     <>
@@ -38,9 +41,7 @@ const AccountOrdersPage = () => {
                             <th className="fw-6">Actions</th>
                           </tr>
                         </thead>
-                        <tbody>
-                        
-                        </tbody>
+                        <tbody></tbody>
                       </table>
                     </div>
                   </div>
@@ -64,13 +65,48 @@ const AccountOrdersPage = () => {
             id="mbAccount"
           >
             <div className="canvas-wrapper">
-              <header className="canvas-header">
-                <span className="title">SIDEBAR ACCOUNT</span>
-                <span
-                  className="icon-close icon-close-popup"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                />
+              <header className="p-3">
+                <ul className="flex flex-col gap-y-4">
+                  <li className="border-b-2 border-gray-600">
+                    <Link
+                      href="/account/"
+                      className="cursor-pointer w-full text-lg"
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="border-b-2 border-gray-600">
+                    <Link
+                      href="/account/orders"
+                      className="cursor-pointer w-full text-lg"
+                    >
+                      Orders
+                    </Link>
+                  </li>
+                  <li className="border-b-2 border-gray-600">
+                    <Link
+                      href="/account/address"
+                      className="cursor-pointer w-full text-lg"
+                    >
+                      Address
+                    </Link>
+                  </li>
+                  <li className="border-b-2 border-gray-600">
+                    <Link
+                      href="/account/edit"
+                      className="cursor-pointer w-full text-lg"
+                    >
+                      Account Details
+                    </Link>
+                  </li>
+                  <li className="border-b-2 border-gray-600">
+                    <SignOutButton>
+                      <span className="cursor-pointer w-full text-lg">
+                        Logout
+                      </span>
+                    </SignOutButton>
+                  </li>
+                </ul>
               </header>
               <div className="canvas-body sidebar-mobile-append"> </div>
             </div>

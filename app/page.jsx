@@ -865,17 +865,9 @@ export default function Home() {
                     <div
                       dir="ltr"
                       className="swiper tf-sw-product-sell-1 wrap-sw-over"
-                      data-preview={2}
-                      data-tablet={2}
-                      data-mobile={2}
-                      data-space-lg={30}
-                      data-space-md={15}
-                      data-pagination={2}
-                      data-pagination-md={3}
-                      data-pagination-lg={3}
                     >
-                      <div className="swiper-wrapper">
-                        <div className="swiper-slide">
+                      <div className="flex flex-row wrap gap-3 overflow-x-auto">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -895,7 +887,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -915,7 +907,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -935,7 +927,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -955,7 +947,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -975,7 +967,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -995,7 +987,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1015,7 +1007,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1035,7 +1027,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1055,7 +1047,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1075,7 +1067,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1095,7 +1087,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1115,7 +1107,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a
@@ -1138,7 +1130,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1158,7 +1150,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1178,7 +1170,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1198,7 +1190,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1218,7 +1210,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1238,7 +1230,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1258,7 +1250,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1278,7 +1270,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1298,7 +1290,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1318,7 +1310,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1338,7 +1330,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1358,7 +1350,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1378,7 +1370,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1398,7 +1390,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1418,7 +1410,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1438,7 +1430,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1458,7 +1450,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1478,7 +1470,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1498,7 +1490,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1518,7 +1510,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1538,7 +1530,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1558,7 +1550,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="swiper-slide">
+                        <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
                               <a href="#" className="product-img ">
@@ -1596,12 +1588,9 @@ export default function Home() {
               </div>
               <div className="container">
                 <div className="wrap-carousel">
-                  <div
-                    dir="ltr"
-                    className="tf-sw-testimonial mb-[60px]"
-                  >
-                    <div className="flex flex-row wrap gap-3">
-                      <div className="w-[250px] height-auto">
+                  <div dir="ltr" className="tf-sw-testimonial mb-[60px]">
+                    <div className="flex flex-row wrap gap-3 overflow-x-auto">
+                      <div className="w-[350px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay="0s"
@@ -1625,7 +1614,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="w-[250px] height-auto">
+                      <div className="w-[350px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".1s"
@@ -1649,7 +1638,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="w-[250px] height-auto">
+                      <div className="w-[350px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".2s"
@@ -1673,7 +1662,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="w-[250px] height-auto">
+                      <div className="w-[350px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".2s"
@@ -1698,7 +1687,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="w-[250px] height-auto">
+                      <div className="w-[350px] height-auto">
                         <div
                           className="testimonial-item h-100 font-poppins style-box wow fadeInUp"
                           data-wow-delay=".2s"
@@ -2365,88 +2354,7 @@ export default function Home() {
                   </ul>
                 </div>
               </li>
-              <li className="nav-mb-item">
-                <a
-                  href="#dropdown-menu-four"
-                  className="collapsed mb-menu-link current"
-                  data-bs-toggle="collapse"
-                  aria-expanded="true"
-                  aria-controls="dropdown-menu-four"
-                >
-                  <span>Pages</span>
-                  <span className="btn-open-sub" />
-                </a>
-                <div id="dropdown-menu-four" className="collapse">
-                  <ul className="sub-nav-menu" id="sub-menu-navigation">
-                    <li>
-                      <a href="#" className="sub-nav-link">
-                        About us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="sub-nav-link">
-                        Contact 1
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="sub-nav-link line-clamp">
-                        Payment Confirmation
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="sub-nav-link line-clamp">
-                        Payment Failure
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#sub-account"
-                        className="sub-nav-link collapsed"
-                        data-bs-toggle="collapse"
-                        aria-expanded="true"
-                        aria-controls="sub-account"
-                      >
-                        <span>My Account</span>
-                        <span className="btn-open-sub" />
-                      </a>
-                      <div id="sub-account" className="collapse">
-                        <ul className="sub-nav-menu sub-menu-level-2">
-                          <li>
-                            <a href="#" className="sub-nav-link">
-                              My account
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="sub-nav-link">
-                              My order
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="sub-nav-link">
-                              My order details
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="sub-nav-link">
-                              My address
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="sub-nav-link">
-                              My account details
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="#" className="sub-nav-link line-clamp">
-                        Invoice
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+
               <div className="mb-notice">
                 <a href="#" className="text-need">
                   Contact Us
@@ -2468,10 +2376,6 @@ export default function Home() {
           </div>
         </div>
         <div className="mb-bottom">
-          <a href="#" className="site-nav-icon">
-            <i className="icon icon-account" />
-            Login
-          </a>
           <div className="bottom-bar-language">
             <div className="tf-currencies">
               <select className="image-select center style-default type-currencies">
