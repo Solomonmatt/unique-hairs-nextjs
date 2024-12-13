@@ -277,6 +277,7 @@ const ShopPage = () => {
         </div>
       </section>
       {/* /Section Product */}
+      
       {/* Footer */}
       <footer
         id="footer"
@@ -650,7 +651,7 @@ const ShopPage = () => {
                 <div id="dropdown-menu-one" className="collapse">
                   <ul className="sub-nav-menu">
                     <li>
-                      <a href="" className="sub-nav-link" />
+                      <a href="/app" className="sub-nav-link" />
                     </li>
                   </ul>
                 </div>
@@ -1012,17 +1013,17 @@ const ShopPage = () => {
                   <div className="tf-search-content-title fw-5">Quick link</div>
                   <ul className="tf-quicklink-list">
                     <li className="tf-quicklink-item">
-                      <a href="#" className="">
+                      <a href="/shop" className="">
                         Wigs
                       </a>
                     </li>
                     <li className="tf-quicklink-item">
-                      <a href="#" className="">
+                      <a href="/shop" className="">
                         Bundles
                       </a>
                     </li>
                     <li className="tf-quicklink-item">
-                      <a href="#" className="">
+                      <a href="/shop" className="">
                         Hair Treatment
                       </a>
                     </li>
@@ -1048,7 +1049,7 @@ const ShopPage = () => {
           <div className="mb-body">
             <ul className="nav-ul-mb" id="wrapper-menu-navigation">
               <li className="nav-mb-item">
-                <a href="#" className="tf-category-link mb-menu-link">
+                <a href="/shop" className="tf-category-link mb-menu-link">
                   <div className="image">
                     <img src="images/demo/d3.png" alt="" />
                   </div>
@@ -1056,7 +1057,7 @@ const ShopPage = () => {
                 </a>
               </li>
               <li className="nav-mb-item">
-                <a href="#" className="tf-category-link mb-menu-link">
+                <a href="/shop" className="tf-category-link mb-menu-link">
                   <div className="image">
                     <img src="images/demo/color.png" alt="" />
                   </div>
@@ -1067,7 +1068,7 @@ const ShopPage = () => {
           </div>
         </div>
         <div className="mb-bottom">
-          <a href="#" className="tf-btn fw-5 btn-line">
+          <a href="/shop" className="tf-btn fw-5 btn-line">
             View all collection
             <i className="icon icon-arrow1-top-left" />
           </a>
