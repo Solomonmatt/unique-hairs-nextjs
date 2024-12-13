@@ -238,7 +238,7 @@ export default function Home() {
                     </h1>
                     <div className="fade-item fade-item-2">
                       <a
-                        href="#"
+                        href="/shop"
                         className="font-poppins tf-btn btn-outline-light rounded-0 fw-6 fs-14 link justify-content-center letter-spacing-2 wow fadeInUp"
                         data-wow-delay="0s"
                       >
@@ -265,7 +265,7 @@ export default function Home() {
                     </h1>
                     <div className="fade-item fade-item-2">
                       <a
-                        href="#"
+                        href="/shop"
                         className="font-poppins tf-btn btn-outline-light rounded-0 fw-6 fs-14 link justify-content-center letter-spacing-2 wow fadeInUp"
                         data-wow-delay="0s"
                       >
@@ -293,7 +293,7 @@ export default function Home() {
                     </h1>
                     <div className="fade-item fade-item-2">
                       <a
-                        href="#"
+                        href="/shop"
                         className="font-poppins tf-btn btn-outline-light rounded-0 fw-6 fs-14 link justify-content-center letter-spacing-2 wow fadeInUp"
                         data-wow-delay="0s"
                       >
@@ -487,7 +487,7 @@ export default function Home() {
                 <span className="icon icon-arrow1-left" />
               </div>
               <a
-                href="#"
+                href="/shop"
                 className="tf-btn btn-line fs-12 fw-6 font-poppins btn-line-light"
               >
                 VIEW ALL
@@ -564,7 +564,9 @@ export default function Home() {
                         <span className="price font-poppins text-lg text-white">
                           £{product?.price}
                         </span>
-                        {/* <ul className="list-color-product">
+                        {
+                        /* 
+                        <ul className="list-color-product">
                               <li className="list-color-item color-swatch active">
                                 <span className="tooltip">Golden Yellow</span>
                                 <span className="swatch-value bg_golden-yellow" />
@@ -585,7 +587,8 @@ export default function Home() {
                                   alt="image-product"
                                 />
                               </li>
-                            </ul> */}
+                            </ul> 
+                            */}
                       </div>
                     </div>
                   );
@@ -825,7 +828,7 @@ export default function Home() {
             </a>
             <div className="box-content">
               <div className="container">
-                <a href="#" className="card-box">
+                <a href="/shop" className="card-box">
                   <h3 className="subheading font-poppins fw-7"> </h3>
                   <h3 className="heading font-poppins fw-8">SUMMER APPROVED</h3>
                   <p className="text">Lounge in style with </p>
@@ -947,6 +950,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
+
                         <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
@@ -967,6 +971,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
+
                         <div className="swiper-slide ">
                           <div className="card-product">
                             <div className="card-product-wrapper rounded-0">
@@ -1577,6 +1582,7 @@ export default function Home() {
               </div>
             </div>
           </section>
+          
           {/* choose us */}
           <section className="flat-spacing-23 bg_brown-4">
             <div className="container-full">
@@ -1722,6 +1728,8 @@ export default function Home() {
         </div>
       </div>
       {/* /choose us */}
+
+
       {/* Icon box */}
       <section
         className="flat-spacing-1 flat-iconbox wow fadeInUp"
@@ -1797,6 +1805,8 @@ export default function Home() {
         </div>
       </section>
       {/* /Icon box */}
+
+      
       {/* Footer */}
       <footer
         id="footer"
@@ -2065,6 +2075,8 @@ export default function Home() {
         </div>
       </footer>
       {/* /Footer */}
+
+
       {/* gotop */}
       <div className="progress-wrap">
         <svg
@@ -2084,6 +2096,8 @@ export default function Home() {
         </svg>
       </div>
       {/* /gotop */}
+
+
       {/* toolbar-bottom */}
       <div className="tf-toolbar-bottom type-1150">
         <div className="toolbar-item">
@@ -2169,7 +2183,7 @@ export default function Home() {
                 <div id="dropdown-menu-one" className="collapse">
                   <ul className="sub-nav-menu">
                     <li>
-                      <a href="" className="sub-nav-link" />
+                      <a href="/page" className="sub-nav-link" />
                     </li>
                   </ul>
                 </div>
@@ -2189,7 +2203,7 @@ export default function Home() {
                   <ul className="sub-nav-menu" id="sub-menu-navigation">
                     <li>
                       <a
-                        href="#"
+                        href="/shop"
                         className="sub-nav-link collapsed"
                         data-bs-toggle="collapse"
                         aria-expanded="true"
@@ -2200,7 +2214,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/shop"
                         className="sub-nav-link collapsed"
                         data-bs-toggle="collapse"
                         aria-expanded="true"
@@ -2211,7 +2225,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/shop"
                         className="sub-nav-link collapsed"
                         data-bs-toggle="collapse"
                         aria-expanded="true"
@@ -2222,7 +2236,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/shop"
                         className="sub-nav-link collapsed"
                         data-bs-toggle="collapse"
                         aria-expanded="true"
@@ -2249,7 +2263,7 @@ export default function Home() {
                   <ul className="sub-nav-menu" id="sub-menu-navigation">
                     <li>
                       <a
-                        href="#"
+                        href="/shop"
                         className="sub-nav-link collapsed"
                         data-bs-toggle="collapse"
                         aria-expanded="true"
@@ -2405,6 +2419,9 @@ export default function Home() {
         </div>
       </div>
       {/* /mobile menu */}
+
+
+
       {/* canvasSearch */}
       <div className="offcanvas offcanvas-end canvas-search" id="canvasSearch">
         <div className="canvas-wrapper">
@@ -2445,17 +2462,17 @@ export default function Home() {
                   <div className="tf-search-content-title fw-5">Quick link</div>
                   <ul className="tf-quicklink-list">
                     <li className="tf-quicklink-item">
-                      <a href="#" className="">
+                      <a href="/shop" className="">
                         Wigs
                       </a>
                     </li>
                     <li className="tf-quicklink-item">
-                      <a href="#" className="">
+                      <a href="/shop" className="">
                         Bundles
                       </a>
                     </li>
                     <li className="tf-quicklink-item">
-                      <a href="#" className="">
+                      <a href="/shop" className="">
                         Hair Treatment
                       </a>
                     </li>
@@ -2481,7 +2498,7 @@ export default function Home() {
           <div className="mb-body">
             <ul className="nav-ul-mb" id="wrapper-menu-navigation">
               <li className="nav-mb-item">
-                <a href="#" className="tf-category-link mb-menu-link">
+                <a href="/shop" className="tf-category-link mb-menu-link">
                   <div className="image">
                     <img src="images/demo/d3.png" alt="" />
                   </div>
@@ -2489,7 +2506,7 @@ export default function Home() {
                 </a>
               </li>
               <li className="nav-mb-item">
-                <a href="#" className="tf-category-link mb-menu-link">
+                <a href="/shop" className="tf-category-link mb-menu-link">
                   <div className="image">
                     <img src="images/demo/color.png" alt="" />
                   </div>
@@ -2500,7 +2517,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mb-bottom">
-          <a href="#" className="tf-btn fw-5 btn-line">
+          <a href="/shop" className="tf-btn fw-5 btn-line">
             View all collection
             <i className="icon icon-arrow1-top-left" />
           </a>
@@ -2721,6 +2738,8 @@ export default function Home() {
         </div>
       </div>
       {/* /modal login */}
+
+
       {/* shoppingCart */}
       <div
         className="modal fullRight fade modal-shopping-cart"
@@ -2901,6 +2920,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
+
                       {/* <div className="tf-mini-cart-tool-openable add-note">
                         <div className="overplay tf-mini-cart-tool-close" />
                         <div className="tf-mini-cart-tool-content">
@@ -3124,6 +3144,7 @@ export default function Home() {
               </div>
             </div>
             {/* /shoppingCart */}
+
             {/* modal ask_question */}
             <div
               className="modal modalCentered fade modalDemo tf-product-modal modal-part-content"
@@ -3203,6 +3224,7 @@ export default function Home() {
               </div>
             </div>
             {/* /modal ask_question */}
+            
             {/* modal delivery_return */}
             <div
               className="modal modalCentered fade modalDemo tf-product-modal modal-part-content"
