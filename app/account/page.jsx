@@ -363,7 +363,7 @@ const AccountPage = () => {
                   <div className="col-12">
                     <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                       <div className="footer-menu_item">
-                        © 2024 Unique Expressions Hair Studio. All Rights
+                        © 2025 Unique Expressions Hair Studio. All Rights
                         Reserved
                       </div>
                       <div className="tf-payment">
