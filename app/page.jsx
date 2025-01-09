@@ -660,8 +660,8 @@ export default function Home() {
             </div>
             <div
               className="item-3 collection-item-v5 hover-img wow fadeInUp"
-              data-wow-delay="0s"
-            >
+              data-wow-delay="0s">
+              
               <div className="collection-inner">
                 <a href="#" className="collection-image img-style">
                   <img
@@ -681,16 +681,14 @@ export default function Home() {
             </div>
             <div
               className="item-4 collection-item-v5 hover-img wow fadeInUp"
-              data-wow-delay="0s"
-            >
+              data-wow-delay="0s">
               <div className="collection-inner">
                 <a href="#" className="collection-image img-style">
                   <img
                     className="lazyload"
                     data-src="images/collections/CORN.png"
                     src="images/collections/CORN.png"
-                    alt="collection-img"
-                  />
+                    alt="collection-img" />
                 </a>
                 <div className="collection-content">
                   <a href="#" className="collection-title">
