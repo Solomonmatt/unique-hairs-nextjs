@@ -843,7 +843,7 @@ export default function Home() {
                 <div className="col-md-6">
                   <div className="box-video-wrap">
                     <video
-                      src="images/slider/video-jewerly.mp4"
+                      src="images/slider/Download.mp4"
                       autoPlay={true}
                       muted={true}
                       playsInline={true}
